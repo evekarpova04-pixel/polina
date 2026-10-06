@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Математика 5 класса — сравниваем величины</title>
+<style>
+  :root{
+    --bg:#f5f7fb; --card:#fff; --ink:#24324a; --muted:#667085;
+    --blue:#4f7cff; --blue2:#eaf0ff; --green:#20a46b; --red:#e35d6a;
+    --yellow:#fff3c4; --line:#dfe5ef; --shadow:0 8px 24px rgba(40,55,85,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--ink)}
+  header{background:linear-gradient(135deg,#4f7cff,#7d62e9);color:#fff;padding:28px 20px}
+  header .wrap, main{max-width:1050px;margin:auto}
+  h1{margin:0 0 8px;font-size:clamp(26px,4vw,40px)}
+  header p{margin:0;opacity:.92}
+  nav{display:flex;gap:8px;flex-wrap:wrap;margin:20px auto 0;max-width:1050px}
+  nav button{border:0;border-radius:12px;padding:11px 15px;background:rgba(255,255,255,.16);color:#fff;cursor:pointer;font-weight:700}
+  nav button.active{background:#fff;color:#4f63c8}
+  main{padding:26px 16px 60px}
+  .page{display:none}.page.active{display:block}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px;margin-bottom:18px;box-shadow:var(--shadow)}
+  .intro{font-size:20px;line-height:1.5}
+  .task{background:#f9fbff;border:2px solid #e5eaff;border-radius:16px;padding:18px;margin-top:16px}
+  .task h3{margin:0 0 12px}
+  .equation{font-size:25px;font-weight:800;text-align:center;margin:15px 0}
+  .drop{display:inline-flex;min-width:64px;min-height:48px;padding:6px 10px;border:2px dashed #9aabe0;border-radius:12px;vertical-align:middle;align-items:center;justify-content:center;background:#fff}
+  .drop.over{background:var(--blue2);border-color:var(--blue)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+  .chip{background:#fff;border:2px solid #cfd8ee;border-radius:12px;padding:9px 14px;font-size:18px;font-weight:800;cursor:grab;user-select:none}
+  .chip:active{cursor:grabbing}
+  .feedback{min-height:24px;text-align:center;font-weight:800;margin-top:10px}
+  .ok{color:var(--green)}.bad{color:var(--red)}
+  .difference{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+  input{width:82px;padding:10px;border:2px solid var(--line);border-radius:10px;font-size:18px;text-align:center}
+  button.action{border:0;background:var(--blue);color:white;border-radius:11px;padding:10px 15px;font-weight:800;cursor:pointer}
+  button.secondary{border:1px solid var(--line);background:#fff;color:var(--ink)}
+  .hint{color:var(--muted);font-size:14px;margin-top:8px}
+  .rule{background:var(--yellow);border-radius:14px;padding:14px 16px;margin-top:14px;font-weight:700}
+  .progress{height:10px;background:#e7ebf3;border-radius:99px;overflow:hidden;margin:14px 0 5px}
+  .progress>div{height:100%;width:0;background:var(--green);transition:.3s}
+  .shape-area{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .shape{border:2px solid #b9c7e8;border-radius:14px;padding:15px;text-align:center}
+  .rect{width:160px;height:90px;border:4px solid var(--blue);margin:15px auto}
+  @media(max-width:700px){.shape-area{grid-template-columns:1fr}}
+
+  .block-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+  .math-block{background:#fff;border:2px solid #dce4f5;border-radius:16px;padding:18px 12px;text-align:center;min-height:180px;display:flex;flex-direction:column;justify-content:center}
+  .statement{font-size:20px;margin-bottom:18px;white-space:nowrap}
+  .sum-row{font-size:22px;font-weight:800}
+  .answer-slot{display:inline-flex;min-width:55px;height:40px;align-items:center;justify-content:center;border:2px dashed #9aabe0;border-radius:10px;background:#f9fbff;color:#667085}
+  .mini-chips{display:flex;justify-content:center;gap:7px;margin-top:15px;flex-wrap:wrap}
+  .num-chip{border:1px solid #cbd5e8;background:#f6f8fd;border-radius:9px;padding:7px 11px;font-weight:800;cursor:pointer}
+  .num-chip:hover{background:#eaf0ff}
+  .block-feedback{height:22px;margin-top:7px;font-size:14px;font-weight:800}
+  .pattern-box{background:#fff4c9;border-left:5px solid #f1c84b;padding:14px 16px;border-radius:12px;margin-top:18px;line-height:1.5}
+  @media(max-width:850px){.block-grid{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:520px){.block-grid{grid-template-columns:1fr}.statement{font-size:18px}}
+
+  .story-task{background:#fbfcff;border:2px solid #e1e7f5;border-radius:18px;padding:20px;margin-top:18px}
+  .story-number{display:inline-block;background:#eaf0ff;color:#4059b8;font-weight:900;border-radius:10px;padding:6px 10px;margin-bottom:8px}
+  .story-task h3{margin:5px 0 10px}
+  .story-task p{line-height:1.55}
+  .compare-list{background:#fff;border-radius:14px;padding:14px;margin:16px 0}
+  .compare-row{display:flex;align-items:center;justify-content:center;gap:9px;flex-wrap:wrap;padding:10px;border-bottom:1px solid #edf0f6;font-size:18px}
+  .compare-row:last-child{border-bottom:0}
+  .compare-row select{border:2px solid #cdd7ec;border-radius:10px;background:#f8faff;padding:8px 10px;font-size:16px;font-weight:700;color:var(--ink)}
+  .paper-note{background:#fff4c9;border-radius:12px;padding:12px 15px;font-weight:700;margin:12px 0}
+  .self-check{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .self-check label{font-weight:800}
+  .self-check input{width:140px}
+  .story-feedback{text-align:center;min-height:25px;font-weight:900;margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Математика 5 класса</h1>
+    <p>Сравнение величин • разность • «во сколько раз» • периметр и площадь</p>
+    <nav id="nav"></nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page" id="blocks">
+  <div class="card">
+    <h2>Сравниваем числа: больше и суммы</h2>
+    <p class="intro">Посмотри на пары. В первой строке записано, на сколько одно число больше другого. Во второй — сумма меньшего числа и разности.</p>
+
+    <div class="block-grid">
+      <div class="math-block">
+        <div class="statement"><b>27 &gt; 14 на 13</b></div>
+        <div class="sum-row">14 + 13 = <span class="answer-slot" data-value="27">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">27</button><button class="num-chip">26</button><button class="num-chip">25</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+
+      <div class="math-block">
+        <div class="statement"><b>35 &gt; 20 на 15</b></div>
+        <div class="sum-row">20 + 15 = <span class="answer-slot" data-value="35">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">35</button><button class="num-chip">34</button><button class="num-chip">33</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+
+      <div class="math-block">
+        <div class="statement"><b>17 &gt; 12 на 5</b></div>
+        <div class="sum-row">12 + 5 = <span class="answer-slot" data-value="17">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">15</button><button class="num-chip">17</button><button class="num-chip">19</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+
+      <div class="math-block">
+        <div class="statement"><b>x &gt; 22 на 12</b></div>
+        <div class="sum-row">22 + 12 = <span class="answer-slot" data-value="34">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">32</button><button class="num-chip">34</button><button class="num-chip">36</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+    </div>
+
+    <div class="pattern-box">
+      <b>Закономерность:</b> если число больше другого <b>на</b> несколько единиц, то
+      <b>меньшее число + разность = большее число.</b>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Меньше и разности</h2>
+    <p class="intro">Теперь прочитай пары наоборот. Если число меньше другого на несколько единиц, разность помогает восстановить меньшее число.</p>
+
+    <div class="block-grid">
+      <div class="math-block">
+        <div class="statement"><b>14 &lt; 27 на 13</b></div>
+        <div class="sum-row">27 − 13 = <span class="answer-slot" data-value="14">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">14</button><button class="num-chip">15</button><button class="num-chip">16</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+
+      <div class="math-block">
+        <div class="statement"><b>20 &lt; 35 на 15</b></div>
+        <div class="sum-row">35 − 15 = <span class="answer-slot" data-value="20">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">18</button><button class="num-chip">20</button><button class="num-chip">22</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+
+      <div class="math-block">
+        <div class="statement"><b>12 &lt; 17 на 5</b></div>
+        <div class="sum-row">17 − 5 = <span class="answer-slot" data-value="12">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">10</button><button class="num-chip">12</button><button class="num-chip">14</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+
+      <div class="math-block">
+        <div class="statement"><b>22 &lt; 34 на 12</b></div>
+        <div class="sum-row">34 − 12 = <span class="answer-slot" data-value="22">?</span></div>
+        <div class="mini-chips">
+          <button class="num-chip">20</button><button class="num-chip">22</button><button class="num-chip">24</button>
+        </div>
+        <div class="block-feedback"></div>
+      </div>
+    </div>
+
+    <div class="pattern-box">
+      <b>Закономерность:</b> если число меньше другого <b>на</b> несколько единиц, то
+      <b>большее число − разность = меньшее число.</b>
+    </div>
+  </div>
+</section>
+
+
+<section class="page" id="wordtasks">
+  <div class="card">
+    <h2>Задачи: сравни стороны и найди периметр</h2>
+    <p class="intro">Прочитай условие. Под ним выбери, какая сторона больше или меньше другой и на сколько. После этого реши задачу на бумаге и найди периметр.</p>
+
+    <div class="story-task comparison-task">
+      <div class="story-number">Задача 1 · Треугольник</div>
+      <h3>Треугольник KLM</h3>
+      <p>Сторона <b>KM</b> равна 6 см 8 мм. Сторона <b>ML</b> короче стороны <b>KM</b> на 1 см 3 мм, но сторона <b>KL</b> длиннее стороны <b>KM</b> на 2 см 4 мм. Найди периметр треугольника KLM.</p>
+
+      <div class="compare-list">
+        <div class="compare-row">
+          <b>ML</b>
+          <select data-correct="меньше">
+            <option value="">— выбери —</option>
+            <option>больше</option><option>меньше</option>
+          </select>
+          <b>KM</b>
+          <span>на</span>
+          <select data-correct="1 см 3 мм">
+            <option value="">— выбери —</option>
+            <option>1 см 3 мм</option><option>2 см 4 мм</option><option>3 см 7 мм</option>
+          </select>
+        </div>
+        <div class="compare-row">
+          <b>KL</b>
+          <select data-correct="больше">
+            <option value="">— выбери —</option>
+            <option>больше</option><option>меньше</option>
+          </select>
+          <b>KM</b>
+          <span>на</span>
+          <select data-correct="2 см 4 мм">
+            <option value="">— выбери —</option>
+            <option>1 см 3 мм</option><option>2 см 4 мм</option><option>3 см 7 мм</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="paper-note">✏️ Теперь реши задачу на бумаге и найди периметр треугольника KLM.</div>
+      <div class="self-check">
+        <label>Мой ответ: P = <input type="text" data-perimeter="21 см 5 мм" placeholder="введи ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task">
+      <div class="story-number">Задача 2 · Прямоугольник</div>
+      <h3>Прямоугольник ABCD</h3>
+      <p>Длина прямоугольника <b>AB</b> равна 9 см. Ширина <b>BC</b> на 3 см меньше длины. Найди периметр прямоугольника ABCD.</p>
+
+      <div class="compare-list">
+        <div class="compare-row">
+          <b>BC</b>
+          <select data-correct="меньше">
+            <option value="">— выбери —</option>
+            <option>больше</option><option>меньше</option>
+          </select>
+          <b>AB</b>
+          <span>на</span>
+          <select data-correct="3 см">
+            <option value="">— выбери —</option>
+            <option>2 см</option><option>3 см</option><option>4 см</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="paper-note">✏️ Реши задачу на бумаге: сначала найди ширину, затем периметр.</div>
+      <div class="self-check">
+        <label>Мой ответ: P = <input type="text" data-perimeter="30 см" placeholder="введи ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task">
+      <div class="story-number">Задача 3 · Прямоугольник</div>
+      <h3>Прямоугольник MNPK</h3>
+      <p>Длина прямоугольника <b>MN</b> равна 12 см, а ширина <b>NP</b> равна 5 см. На сколько сантиметров длина больше ширины? Найди периметр прямоугольника MNPK.</p>
+
+      <div class="compare-list">
+        <div class="compare-row">
+          <b>MN</b>
+          <select data-correct="больше">
+            <option value="">— выбери —</option>
+            <option>больше</option><option>меньше</option>
+          </select>
+          <b>NP</b>
+          <span>на</span>
+          <select data-correct="7 см">
+            <option value="">— выбери —</option>
+            <option>5 см</option><option>7 см</option><option>17 см</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="paper-note">✏️ Реши задачу на бумаге и найди периметр прямоугольника.</div>
+      <div class="self-check">
+        <label>Мой ответ: P = <input type="text" data-perimeter="34 см" placeholder="введи ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="pattern-box">
+      <b>Работаем как на уроке:</b> прочитал условие → сравнил стороны → указал, на сколько одна больше или меньше → решил задачу на бумаге → проверил ответ.
+    </div>
+  </div>
+</section>
+
+<section class="page active" id="add">
+  <div class="card">
+    <h2>1. На сколько больше?</h2>
+    <p class="intro">Если одно число больше другого <b>на несколько единиц</b>, нужно найти разность: из большего числа вычитаем меньшее.</p>
+    <div class="task" data-task="add1">
+      <h3>Задание</h3>
+      <div class="equation">24 больше 17 на <span class="drop" data-answer="7">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">5</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">9</span></div>
+      <div class="feedback"></div>
+    </div>
+    <div class="task" data-task="add2">
+      <div class="equation">31 больше 23 на <span class="drop" data-answer="8">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">8</span><span class="chip" draggable="true">10</span></div>
+      <div class="feedback"></div>
+    </div>
+    <div class="task" data-task="add3">
+      <h3>Собери равенство</h3>
+      <div class="equation"><span class="drop" data-answer="16">?</span> + <span class="drop" data-answer="6">?</span> = <span class="drop" data-answer="22">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">22</span><span class="chip" draggable="true">16</span><span class="chip" draggable="true">6</span><span class="chip" draggable="true">8</span></div>
+      <div class="feedback"></div>
+    </div>
+    <div class="rule">Наблюдение: если «больше на», то <b>большее − меньшее = разность</b>.</div>
+  </div>
+</section>
+
+<section class="page" id="sub">
+  <div class="card">
+    <h2>2. На сколько меньше?</h2>
+    <p class="intro">Фраза «меньше на» тоже говорит о <b>разности</b>. Попробуй найти её и объяснить, почему получился именно такой ответ.</p>
+    <div class="task"><h3>Задание</h3><div class="equation">15 меньше 22 на <span class="drop" data-answer="7">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">5</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">9</span></div><div class="feedback"></div>
+    </div>
+    <div class="task"><div class="equation">28 меньше 35 на <span class="drop" data-answer="7">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">8</span></div><div class="feedback"></div>
+    </div>
+    <div class="task"><h3>Заполни равенство</h3><div class="equation"><span class="drop" data-answer="29">?</span> − <span class="drop" data-answer="11">?</span> = <span class="drop" data-answer="18">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">18</span><span class="chip" draggable="true">29</span><span class="chip" draggable="true">11</span><span class="chip" draggable="true">20</span></div><div class="feedback"></div>
+    </div>
+    <div class="rule">Наблюдение: «меньше на» и «больше на» связаны с одним действием — <b>вычитанием</b> и одной разностью.</div>
+  </div>
+</section>
+
+<section class="page" id="times">
+  <div class="card">
+    <h2>3. Во сколько раз больше?</h2>
+    <p class="intro">Здесь речь уже не о разности, а о <b>частном</b>. Чтобы узнать, во сколько раз больше одно число, раздели большее на меньшее.</p>
+    <div class="task"><div class="equation">24 больше 6 в <span class="drop" data-answer="4">?</span> раза</div>
+      <div class="chips"><span class="chip" draggable="true">3</span><span class="chip" draggable="true">4</span><span class="chip" draggable="true">6</span></div><div class="feedback"></div></div>
+    <div class="task"><div class="equation">45 больше 9 в <span class="drop" data-answer="5">?</span> раз</div>
+      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">5</span><span class="chip" draggable="true">6</span></div><div class="feedback"></div></div>
+    <div class="task"><h3>Собери выражение</h3><div class="equation"><span class="drop" data-answer="32">?</span> : <span class="drop" data-answer="8">?</span> = <span class="drop" data-answer="4">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">8</span><span class="chip" draggable="true">32</span><span class="chip" draggable="true">24</span></div><div class="feedback"></div></div>
+    <div class="rule">Наблюдение: «во сколько раз» → <b>деление</b>. Большее число : меньшее число = во сколько раз.</div>
+  </div>
+</section>
+
+<section class="page" id="less-times">
+  <div class="card">
+    <h2>4. Во сколько раз меньше?</h2>
+    <p class="intro">Чтобы узнать, во сколько раз одно число меньше другого, снова используем <b>деление</b>: большее число делим на меньшее.</p>
+    <div class="task"><div class="equation">7 меньше 35 в <span class="drop" data-answer="5">?</span> раз</div>
+      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">5</span><span class="chip" draggable="true">7</span></div><div class="feedback"></div></div>
+    <div class="task"><div class="equation">6 меньше 42 в <span class="drop" data-answer="7">?</span> раз</div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">8</span></div><div class="feedback"></div></div>
+    <div class="task"><h3>Проверь закономерность</h3><div class="equation"><span class="drop" data-answer="54">?</span> : <span class="drop" data-answer="9">?</span> = <span class="drop" data-answer="6">?</span></div>
+      <div class="chips"><span class="chip" draggable="true">9</span><span class="chip" draggable="true">6</span><span class="chip" draggable="true">54</span><span class="chip" draggable="true">45</span></div><div class="feedback"></div></div>
+    <div class="rule">Сравни: <b>«на сколько?» → вычитание</b>, а <b>«во сколько раз?» → деление</b>.</div>
+  </div>
+</section>
+
+<section class="page" id="geometry">
+  <div class="card">
+    <h2>5. Периметр и площадь</h2>
+    <p class="intro">Теперь применим сравнение величин к геометрии. Периметр — длина границы фигуры, а площадь показывает, сколько места занимает фигура.</p>
+    <div class="shape-area">
+      <div class="shape"><b>Прямоугольник</b><div class="rect"></div><p>Длина: 8 см<br>Ширина: 3 см</p>
+        <p>Периметр: <input id="p1" type="number"> см</p>
+        <p>Площадь: <input id="s1" type="number"> см²</p>
+        <button class="action" onclick="checkGeometry()">Проверить</button><div id="geoFeedback" class="feedback"></div>
+      </div>
+      <div class="shape"><b>Сравни фигуры</b>
+        <p>Фигура A: 5 × 4 см<br>Фигура B: 6 × 3 см</p>
+        <p>У какой площадь больше?</p>
+        <button class="action" onclick="choose(this,'A')">A</button>
+        <button class="action" onclick="choose(this,'B')">B</button>
+        <div id="choiceFeedback" class="feedback"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page" id="final">
+  <div class="card">
+    <h2>Итог: найди закономерность</h2>
+    <p class="intro">Заполни пропуски числами. Здесь смешаны все типы сравнений.</p>
+    <div class="task">
+      <div class="difference">40 больше 25 на <input data-final="15">.</div>
+      <div class="difference">18 меньше 30 на <input data-final="12">.</div>
+      <div class="difference">36 больше 6 в <input data-final="6"> раз.</div>
+      <div class="difference">8 меньше 48 в <input data-final="6"> раз.</div>
+      <button class="action" onclick="finalCheck()">Проверить всё</button>
+      <div id="finalFeedback" class="feedback"></div>
+    </div>
+    <div class="rule">Главная подсказка: <b>«на сколько?» — разность, «во сколько раз?» — частное.</b></div>
+  </div>
+</section>
+</main>
+
+<script>
+const pages=[['blocks','Больше и меньше'],['wordtasks','Задачи'],['add','На сколько больше'],['sub','На сколько меньше'],['times','Во сколько раз больше'],['less-times','Во сколько раз меньше'],['geometry','Периметр и площадь'],['final','Итог']];
+const nav=document.getElementById('nav');
+pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=(i+1)+'. '+p[1];b.onclick=()=>show(p[0]);if(i===0)b.classList.add('active');nav.appendChild(b)});
+function show(id){
+  document.querySelectorAll('.page').forEach(x=>x.classList.toggle('active',x.id===id));
+  [...nav.children].forEach((b,i)=>b.classList.toggle('active',pages[i][0]===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+let dragged=null;
+document.addEventListener('dragstart',e=>{if(e.target.classList.contains('chip'))dragged=e.target});
+document.addEventListener('dragover',e=>{if(e.target.classList.contains('drop')){e.preventDefault();e.target.classList.add('over')}});
+document.addEventListener('dragleave',e=>{if(e.target.classList.contains('drop'))e.target.classList.remove('over')});
+document.addEventListener('drop',e=>{
+  if(!e.target.classList.contains('drop')||!dragged)return;
+  e.preventDefault();e.target.classList.remove('over');
+  e.target.textContent=dragged.textContent;
+  let task=e.target.closest('.task'), drops=[...task.querySelectorAll('.drop')];
+  let ok=drops.every(d=>d.textContent.trim() && d.textContent.trim()===d.dataset.answer);
+  let feedback=task.querySelector('.feedback');
+  if(drops.every(d=>d.textContent.trim())){feedback.textContent=ok?'Верно! Отличная работа!':'Пока не всё верно — попробуй ещё раз.';feedback.className='feedback '+(ok?'ok':'bad')}
+});
+function checkGeometry(){
+  const p=document.getElementById('p1').value,s=document.getElementById('s1').value,f=document.getElementById('geoFeedback');
+  if(+p===22 && +s===24){f.textContent='Верно! P = 2(8+3), S = 8×3.';f.className='feedback ok'}
+  else {f.textContent='Проверь формулы и вычисления.';f.className='feedback bad'}
+}
+function choose(btn,v){
+  const f=document.getElementById('choiceFeedback');
+  if(v==='A'){f.textContent='Верно: A = 20 см², B = 18 см².';f.className='feedback ok'}
+  else {f.textContent='Попробуй сравнить 5×4 и 6×3.';f.className='feedback bad'}
+}
+function finalCheck(){
+  let inputs=[...document.querySelectorAll('[data-final]')], good=inputs.every(x=>+x.value===+x.dataset.final);
+  const f=document.getElementById('finalFeedback');f.textContent=good?'Все ответы верны! Ты заметил закономерность.':'Есть ошибки. Вспомни: «на сколько» — вычитание, «во сколько раз» — деление.';f.className='feedback '+(good?'ok':'bad');
+}
+
+document.querySelectorAll('.math-block').forEach(block=>{
+  const slot=block.querySelector('.answer-slot');
+  const feedback=block.querySelector('.block-feedback');
+  block.querySelectorAll('.num-chip').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      slot.textContent=chip.textContent;
+      if(chip.textContent===slot.dataset.value){
+        feedback.textContent='✓ Верно!';
+        feedback.style.color='var(--green)';
+      }else{
+        feedback.textContent='Попробуй ещё раз.';
+        feedback.style.color='var(--red)';
+      }
+    });
+  });
+});
+
+
+document.querySelectorAll('.comparison-task').forEach(task=>{
+  const feedback=task.querySelector('.story-feedback');
+  task.querySelector('.check-comparison').addEventListener('click',()=>{
+    const selects=[...task.querySelectorAll('select')];
+    const comparisonsOk=selects.every(s=>s.value===s.dataset.correct);
+    const input=task.querySelector('[data-perimeter]');
+    const normalized=input.value.trim().replace(/\s+/g,' ').toLowerCase();
+    const expected=input.dataset.perimeter.toLowerCase();
+    const perimeterOk=normalized===expected;
+
+    if(comparisonsOk && perimeterOk){
+      feedback.textContent='✓ Всё верно! Отличная работа.';
+      feedback.className='story-feedback ok';
+    }else if(!comparisonsOk){
+      feedback.textContent='Проверь сравнение сторон и величину разности.';
+      feedback.className='story-feedback bad';
+    }else{
+      feedback.textContent='Сравнение верное. Проверь свой ответ на периметр.';
+      feedback.className='story-feedback bad';
+    }
+  });
+});
+
+</script>
+</body>
+</html>
