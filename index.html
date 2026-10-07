@@ -85,7 +85,7 @@
 
 <main>
 
-<section class="page" id="blocks">
+<section class="page active" id="blocks">
   <div class="card">
     <h2>Сравниваем числа: больше и суммы</h2>
     <p class="intro">Посмотри на пары. В первой строке записано, на сколько одно число больше другого. Во второй — сумма меньшего числа и разности.</p>
@@ -359,7 +359,7 @@
   </div>
 </section>
 
-<section class="page active" id="add">
+<section class="page" id="add">
   <div class="card">
     <h2>1. На сколько больше?</h2>
     <p class="intro">Если одно число больше другого <b>на несколько единиц</b>, нужно найти разность: из большего числа вычитаем меньшее.</p>
@@ -404,28 +404,98 @@
 <section class="page" id="times">
   <div class="card">
     <h2>3. Во сколько раз больше?</h2>
-    <p class="intro">Здесь речь уже не о разности, а о <b>частном</b>. Чтобы узнать, во сколько раз больше одно число, раздели большее на меньшее.</p>
-    <div class="task"><div class="equation">24 больше 6 в <span class="drop" data-answer="4">?</span> раза</div>
-      <div class="chips"><span class="chip" draggable="true">3</span><span class="chip" draggable="true">4</span><span class="chip" draggable="true">6</span></div><div class="feedback"></div></div>
-    <div class="task"><div class="equation">45 больше 9 в <span class="drop" data-answer="5">?</span> раз</div>
-      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">5</span><span class="chip" draggable="true">6</span></div><div class="feedback"></div></div>
-    <div class="task"><h3>Собери выражение</h3><div class="equation"><span class="drop" data-answer="32">?</span> : <span class="drop" data-answer="8">?</span> = <span class="drop" data-answer="4">?</span></div>
-      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">8</span><span class="chip" draggable="true">32</span><span class="chip" draggable="true">24</span></div><div class="feedback"></div></div>
-    <div class="rule">Наблюдение: «во сколько раз» → <b>деление</b>. Большее число : меньшее число = во сколько раз.</div>
+    <p class="intro">Сначала сравни величины, а затем вспомни две связанные записи: <b>умножение</b> показывает, как получить большее число, а <b>деление</b> — во сколько раз одно число больше другого.</p>
+
+    <div class="factor-example task">
+      <div class="factor-statement">24 больше 6 в <span class="drop" data-answer="4">?</span> раза</div>
+      <div class="expression-list">
+        <div class="expression-line">6 × <span class="drop" data-answer="4">?</span> = <span class="drop" data-answer="24">?</span></div>
+        <div class="expression-line">24 : 6 = <span class="drop" data-answer="4">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">6</span><span class="chip" draggable="true">24</span><span class="chip" draggable="true">5</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="factor-example task">
+      <div class="factor-statement">35 больше 7 в <span class="drop" data-answer="5">?</span> раз</div>
+      <div class="expression-list">
+        <div class="expression-line">7 × <span class="drop" data-answer="5">?</span> = <span class="drop" data-answer="35">?</span></div>
+        <div class="expression-line">35 : 7 = <span class="drop" data-answer="5">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">5</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">35</span><span class="chip" draggable="true">6</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="factor-example task">
+      <div class="factor-statement">48 больше 8 в <span class="drop" data-answer="6">?</span> раз</div>
+      <div class="expression-list">
+        <div class="expression-line">8 × <span class="drop" data-answer="6">?</span> = <span class="drop" data-answer="48">?</span></div>
+        <div class="expression-line">48 : 8 = <span class="drop" data-answer="6">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">8</span><span class="chip" draggable="true">48</span><span class="chip" draggable="true">7</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="factor-example task">
+      <div class="factor-statement">54 больше 9 в <span class="drop" data-answer="6">?</span> раз</div>
+      <div class="expression-list">
+        <div class="expression-line">9 × <span class="drop" data-answer="6">?</span> = <span class="drop" data-answer="54">?</span></div>
+        <div class="expression-line">54 : 9 = <span class="drop" data-answer="6">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">9</span><span class="chip" draggable="true">54</span><span class="chip" draggable="true">5</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="rule">Наблюдение: если <b>большее число в несколько раз больше</b>, то меньшее × число раз = большее, а большее : меньшее = число раз.</div>
   </div>
 </section>
 
 <section class="page" id="less-times">
   <div class="card">
     <h2>4. Во сколько раз меньше?</h2>
-    <p class="intro">Чтобы узнать, во сколько раз одно число меньше другого, снова используем <b>деление</b>: большее число делим на меньшее.</p>
-    <div class="task"><div class="equation">7 меньше 35 в <span class="drop" data-answer="5">?</span> раз</div>
-      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">5</span><span class="chip" draggable="true">7</span></div><div class="feedback"></div></div>
-    <div class="task"><div class="equation">6 меньше 42 в <span class="drop" data-answer="7">?</span> раз</div>
-      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">8</span></div><div class="feedback"></div></div>
-    <div class="task"><h3>Проверь закономерность</h3><div class="equation"><span class="drop" data-answer="54">?</span> : <span class="drop" data-answer="9">?</span> = <span class="drop" data-answer="6">?</span></div>
-      <div class="chips"><span class="chip" draggable="true">9</span><span class="chip" draggable="true">6</span><span class="chip" draggable="true">54</span><span class="chip" draggable="true">45</span></div><div class="feedback"></div></div>
-    <div class="rule">Сравни: <b>«на сколько?» → вычитание</b>, а <b>«во сколько раз?» → деление</b>.</div>
+    <p class="intro">Теперь наоборот: меньшее число связано с большим теми же действиями. Заполни сравнение и обе связанные записи.</p>
+
+    <div class="factor-example task">
+      <div class="factor-statement">6 меньше 24 в <span class="drop" data-answer="4">?</span> раза</div>
+      <div class="expression-list">
+        <div class="expression-line">6 × <span class="drop" data-answer="4">?</span> = <span class="drop" data-answer="24">?</span></div>
+        <div class="expression-line">24 : 6 = <span class="drop" data-answer="4">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">4</span><span class="chip" draggable="true">6</span><span class="chip" draggable="true">24</span><span class="chip" draggable="true">5</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="factor-example task">
+      <div class="factor-statement">7 меньше 35 в <span class="drop" data-answer="5">?</span> раз</div>
+      <div class="expression-list">
+        <div class="expression-line">7 × <span class="drop" data-answer="5">?</span> = <span class="drop" data-answer="35">?</span></div>
+        <div class="expression-line">35 : 7 = <span class="drop" data-answer="5">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">5</span><span class="chip" draggable="true">7</span><span class="chip" draggable="true">35</span><span class="chip" draggable="true">6</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="factor-example task">
+      <div class="factor-statement">8 меньше 48 в <span class="drop" data-answer="6">?</span> раз</div>
+      <div class="expression-list">
+        <div class="expression-line">8 × <span class="drop" data-answer="6">?</span> = <span class="drop" data-answer="48">?</span></div>
+        <div class="expression-line">48 : 8 = <span class="drop" data-answer="6">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">8</span><span class="chip" draggable="true">48</span><span class="chip" draggable="true">7</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="factor-example task">
+      <div class="factor-statement">9 меньше 54 в <span class="drop" data-answer="6">?</span> раз</div>
+      <div class="expression-list">
+        <div class="expression-line">9 × <span class="drop" data-answer="6">?</span> = <span class="drop" data-answer="54">?</span></div>
+        <div class="expression-line">54 : 9 = <span class="drop" data-answer="6">?</span></div>
+      </div>
+      <div class="chips"><span class="chip" draggable="true">6</span><span class="chip" draggable="true">9</span><span class="chip" draggable="true">54</span><span class="chip" draggable="true">5</span></div>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="rule">Запомни: <b>«во сколько раз» → деление</b>, а связь между числами можно показать и умножением: меньшее × число раз = большее.</div>
   </div>
 </section>
 
@@ -450,6 +520,144 @@
   </div>
 </section>
 
+
+<section class="page" id="factor-geometry">
+  <div class="card">
+    <h2>6. Задачи: «во сколько раз» — периметр и площадь</h2>
+    <p class="intro">В каждой задаче сначала выполни <b>сравнение величин</b> по условию. Затем реши задачу самостоятельно на бумаге: найди недостающие размеры, периметр и площадь. На сайте нет готовых выражений — только проверка.</p>
+
+    <div class="story-task comparison-task multi-step">
+      <div class="story-number">Задача 7 · Два прямоугольника</div>
+      <h3>Прямоугольники ABCD и EFGH</h3>
+      <p>У прямоугольника <b>ABCD</b> длина <b>AB</b> равна 12 см, а ширина <b>BC</b> равна 6 см. Длина <b>EF</b> второго прямоугольника в 3 раза меньше AB, а ширина <b>FG</b> в 2 раза меньше BC. Найди периметр и площадь каждого прямоугольника.</p>
+      <div class="compare-list">
+        <div class="compare-row"><b>EF</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>AB</b><span>в</span><select data-correct="3 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>FG</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>BC</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>S(ABCD)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>S(EFGH)</b><span>в</span><select data-correct="6 раз"><option value="">— выбери —</option><option>3 раза</option><option>6 раз</option><option>8 раз</option></select></div>
+      </div>
+      <div class="paper-note">✏️ Реши самостоятельно: сначала найди стороны второго прямоугольника, затем оба периметра и обе площади.</div>
+      <div class="result-grid">
+        <label>P(ABCD) = <input type="text" data-perimeter="36 см" placeholder="ответ"></label>
+        <label>S(ABCD) = <input type="text" data-area="72 см²" placeholder="ответ"></label>
+        <label>P(EFGH) = <input type="text" data-perimeter="14 см" placeholder="ответ"></label>
+        <label>S(EFGH) = <input type="text" data-area="12 см²" placeholder="ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task multi-step">
+      <div class="story-number">Задача 8 · Прямоугольник и квадрат</div>
+      <h3>Фигуры KLMN и ABCD</h3>
+      <p>Сторона квадрата <b>KLMN</b> равна 5 см. Длина прямоугольника <b>ABCD</b> в 2 раза больше стороны квадрата, а ширина в 2 раза меньше его длины. Найди периметр и площадь обеих фигур.</p>
+      <div class="compare-list">
+        <div class="compare-row"><b>AB</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>KL</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>BC</b><select data-correct="равен"><option value="">— выбери —</option><option>больше</option><option>меньше</option><option>равен</option></select><b>KL</b><span></span><select data-correct="1 раз"><option value="">— выбери —</option><option>1 раз</option><option>2 раза</option><option>3 раза</option></select></div>
+        <div class="compare-row"><b>S(ABCD)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>S(KLMN)</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+      </div>
+      <div class="paper-note">✏️ Самостоятельно найди вторую сторону прямоугольника, затем периметры и площади.</div>
+      <div class="result-grid">
+        <label>P(ABCD) = <input type="text" data-perimeter="30 см" placeholder="ответ"></label>
+        <label>S(ABCD) = <input type="text" data-area="50 см²" placeholder="ответ"></label>
+        <label>P(KLMN) = <input type="text" data-perimeter="20 см" placeholder="ответ"></label>
+        <label>S(KLMN) = <input type="text" data-area="25 см²" placeholder="ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task multi-step">
+      <div class="story-number">Задача 9 · Два прямоугольника</div>
+      <h3>Прямоугольники MNPK и EFGH</h3>
+      <p>У прямоугольника <b>MNPK</b> длина 18 см, а ширина в 3 раза меньше длины. У прямоугольника <b>EFGH</b> длина в 2 раза меньше MN, а ширина в 2 раза меньше ширины MNPK. Найди периметры и площади.</p>
+      <div class="compare-list">
+        <div class="compare-row"><b>NP</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>MN</b><span>в</span><select data-correct="3 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>EF</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>MN</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>P(MNPK)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>P(EFGH)</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>S(MNPK)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>S(EFGH)</b><span>в</span><select data-correct="4 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+      </div>
+      <div class="paper-note">✏️ Реши на бумаге: найди все недостающие стороны, затем периметры и площади.</div>
+      <div class="result-grid">
+        <label>P(MNPK) = <input type="text" data-perimeter="48 см" placeholder="ответ"></label>
+        <label>S(MNPK) = <input type="text" data-area="108 см²" placeholder="ответ"></label>
+        <label>P(EFGH) = <input type="text" data-perimeter="24 см" placeholder="ответ"></label>
+        <label>S(EFGH) = <input type="text" data-area="27 см²" placeholder="ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task multi-step">
+      <div class="story-number">Задача 10 · Три прямоугольника</div>
+      <h3>Фигуры ABCD, EFGH и KLMN</h3>
+      <p>Длина прямоугольника <b>ABCD</b> равна 24 см, а ширина — в 2 раза меньше длины. У <b>EFGH</b> обе стороны в 2 раза меньше соответствующих сторон ABCD. У <b>KLMN</b> обе стороны в 2 раза меньше соответствующих сторон EFGH. Найди периметры и площади всех трёх фигур.</p>
+      <div class="compare-list">
+        <div class="compare-row"><b>BC</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>AB</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>EF</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>AB</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>KL</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>EF</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>S(ABCD)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>S(KLMN)</b><span>в</span><select data-correct="16 раз"><option value="">— выбери —</option><option>4 раза</option><option>8 раз</option><option>16 раз</option></select></div>
+      </div>
+      <div class="paper-note">✏️ Самостоятельно восстанови размеры всех фигур. Затем найди три периметра и три площади.</div>
+      <div class="result-grid">
+        <label>P(ABCD) = <input type="text" data-perimeter="72 см" placeholder="ответ"></label>
+        <label>S(ABCD) = <input type="text" data-area="288 см²" placeholder="ответ"></label>
+        <label>P(EFGH) = <input type="text" data-perimeter="36 см" placeholder="ответ"></label>
+        <label>S(EFGH) = <input type="text" data-area="72 см²" placeholder="ответ"></label>
+        <label>P(KLMN) = <input type="text" data-perimeter="18 см" placeholder="ответ"></label>
+        <label>S(KLMN) = <input type="text" data-area="18 см²" placeholder="ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task multi-step">
+      <div class="story-number">Задача 11 · Квадрат и прямоугольник</div>
+      <h3>Фигуры KLMN и ABCD</h3>
+      <p>Сторона квадрата <b>KLMN</b> равна 6 см. Длина прямоугольника <b>ABCD</b> в 2 раза больше стороны квадрата, а ширина в 2 раза меньше длины прямоугольника. Найди периметры и площади обеих фигур.</p>
+      <div class="compare-list">
+        <div class="compare-row"><b>AB</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>KL</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>BC</b><select data-correct="равен"><option value="">— выбери —</option><option>больше</option><option>меньше</option><option>равен</option></select><b>KL</b><span></span><select data-correct="1 раз"><option value="">— выбери —</option><option>1 раз</option><option>2 раза</option><option>3 раза</option></select></div>
+        <div class="compare-row"><b>P(ABCD)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>P(KLMN)</b><span>на</span><select data-correct="12 см"><option value="">— выбери —</option><option>6 см</option><option>12 см</option><option>18 см</option></select></div>
+        <div class="compare-row"><b>S(ABCD)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>S(KLMN)</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+      </div>
+      <div class="paper-note">✏️ Реши самостоятельно: найди размеры прямоугольника, затем оба периметра и обе площади.</div>
+      <div class="result-grid">
+        <label>P(ABCD) = <input type="text" data-perimeter="36 см" placeholder="ответ"></label>
+        <label>S(ABCD) = <input type="text" data-area="72 см²" placeholder="ответ"></label>
+        <label>P(KLMN) = <input type="text" data-perimeter="24 см" placeholder="ответ"></label>
+        <label>S(KLMN) = <input type="text" data-area="36 см²" placeholder="ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="story-task comparison-task multi-step">
+      <div class="story-number">Задача 12 · Два прямоугольника и квадрат</div>
+      <h3>Фигуры RSTU, EFGH и KLMN</h3>
+      <p>У прямоугольника <b>RSTU</b> длина 16 см, а ширина в 2 раза меньше. У прямоугольника <b>EFGH</b> обе стороны в 2 раза меньше соответствующих сторон RSTU. Сторона квадрата <b>KLMN</b> равна ширине EFGH. Найди периметры и площади всех трёх фигур.</p>
+      <div class="compare-list">
+        <div class="compare-row"><b>ST</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>RS</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>EF</b><select data-correct="меньше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>RS</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>P(RSTU)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>P(EFGH)</b><span>в</span><select data-correct="2 раза"><option value="">— выбери —</option><option>2 раза</option><option>3 раза</option><option>4 раза</option></select></div>
+        <div class="compare-row"><b>S(RSTU)</b><select data-correct="больше"><option value="">— выбери —</option><option>больше</option><option>меньше</option></select><b>S(KLMN)</b><span>в</span><select data-correct="8 раз"><option value="">— выбери —</option><option>4 раза</option><option>6 раз</option><option>8 раз</option></select></div>
+      </div>
+      <div class="paper-note">✏️ Самостоятельно найди размеры EFGH и KLMN. Затем вычисли три периметра и три площади.</div>
+      <div class="result-grid">
+        <label>P(RSTU) = <input type="text" data-perimeter="48 см" placeholder="ответ"></label>
+        <label>S(RSTU) = <input type="text" data-area="128 см²" placeholder="ответ"></label>
+        <label>P(EFGH) = <input type="text" data-perimeter="24 см" placeholder="ответ"></label>
+        <label>S(EFGH) = <input type="text" data-area="32 см²" placeholder="ответ"></label>
+        <label>P(KLMN) = <input type="text" data-perimeter="16 см" placeholder="ответ"></label>
+        <label>S(KLMN) = <input type="text" data-area="16 см²" placeholder="ответ"></label>
+        <button class="action check-comparison">Проверить</button>
+      </div>
+      <div class="story-feedback"></div>
+    </div>
+
+    <div class="pattern-box"><b>Работаем как на уроке:</b> прочитал условие → сравнил величины «во сколько раз» → восстановил недостающие размеры → решил на бумаге → нашёл периметр и площадь → проверил ответ.</div>
+  </div>
+</section>
+
 <section class="page" id="final">
   <div class="card">
     <h2>Итог: найди закономерность</h2>
@@ -468,7 +676,7 @@
 </main>
 
 <script>
-const pages=[['blocks','Больше и меньше'],['wordtasks','Задачи'],['add','На сколько больше'],['sub','На сколько меньше'],['times','Во сколько раз больше'],['less-times','Во сколько раз меньше'],['geometry','Периметр и площадь'],['final','Итог']];
+const pages=[['blocks','Больше и меньше'],['wordtasks','Задачи'],['add','На сколько больше'],['sub','На сколько меньше'],['times','Во сколько раз больше'],['less-times','Во сколько раз меньше'],['geometry','Периметр и площадь'],['factor-geometry','Задачи × ÷: периметр и площадь'],['final','Итог']];
 const nav=document.getElementById('nav');
 pages.forEach((p,i)=>{let b=document.createElement('button');b.textContent=(i+1)+'. '+p[1];b.onclick=()=>show(p[0]);if(i===0)b.classList.add('active');nav.appendChild(b)});
 function show(id){
@@ -527,17 +735,20 @@ document.querySelectorAll('.comparison-task').forEach(task=>{
   task.querySelector('.check-comparison').addEventListener('click',()=>{
     const selects=[...task.querySelectorAll('select')];
     const comparisonsOk=selects.every(s=>s.value===s.dataset.correct);
-    const inputs=[...task.querySelectorAll('[data-perimeter]')];
-    const perimeterOk=inputs.every(input=>input.value.trim().replace(/\s+/g,' ').toLowerCase()===input.dataset.perimeter.toLowerCase());
+    const perimeterInputs=[...task.querySelectorAll('[data-perimeter]')];
+    const areaInputs=[...task.querySelectorAll('[data-area]')];
+    const perimeterOk=perimeterInputs.every(input=>input.value.trim().replace(/\s+/g,' ').toLowerCase()===input.dataset.perimeter.toLowerCase());
+    const areaOk=areaInputs.every(input=>input.value.trim().replace(/\s+/g,' ').toLowerCase()===input.dataset.area.toLowerCase());
+    const resultsOk=perimeterOk && areaOk;
 
-    if(comparisonsOk && perimeterOk){
+    if(comparisonsOk && resultsOk){
       feedback.textContent='✓ Всё верно! Отличная работа.';
       feedback.className='story-feedback ok';
     }else if(!comparisonsOk){
       feedback.textContent='Проверь сравнение сторон и величину разности.';
       feedback.className='story-feedback bad';
     }else{
-      feedback.textContent='Сравнение верное. Проверь свои ответы на периметры.';
+      feedback.textContent='Сравнение верное. Проверь свои ответы на периметр и площадь.';
       feedback.className='story-feedback bad';
     }
   });
